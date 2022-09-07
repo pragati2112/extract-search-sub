@@ -1,0 +1,12 @@
+fastapi~=0.78.0
+uvicorn~=0.16.0
+pydantic~=1.9.0
+celery~=5.2.7
+pysrt~=1.1.2
+# uvicorn[standard] dependencies
+#uvloop~=0.16.0
+httptools~=0.3.0
+websockets~=10.1
+PyYAML~=6.0
+CairoSVG~=2.5.2
+boto3~=1.24.67
