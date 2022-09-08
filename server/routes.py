@@ -46,8 +46,8 @@ async def media(background_task: BackgroundTasks, video_file: UploadFile = File(
 
     # use cc-extractor--  to extract subtitles
     out_path = 'server/uploads/srts/' + new_file_name + '.srt'
-    extract_subtitles(file_path, out_path, video_id=new_file_name)
-    return {'video_id': new_file_name}
+    video_id = extract_subtitles(file_path, out_path, video_id=new_file_name)
+    return {'video_id': video_id}
 
 
 @router.post("/search-subtitles", response_description="Search for subtitles")
