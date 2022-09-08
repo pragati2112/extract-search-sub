@@ -1,4 +1,5 @@
 import boto3
+from botocore.exceptions import ClientError
 
 
 def create_videos_table():
@@ -29,11 +30,11 @@ def create_videos_table():
                                      "WriteCapacityUnits": 10
                                  })
         return _table
-    except db.exceptions.ResourceInUseException:
+    except ClientError as ce:
         # do something here as you require
         _table = db.Table('Videos')
         return _table
 
 
-if __name__ == '__main__':
-    table = create_videos_table()
+# if __name__ == '__main__':
+#     table = create_videos_table()
