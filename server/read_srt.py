@@ -5,15 +5,17 @@ videos_table = create_videos_table()
 
 
 def read_srt_file(file='server/uploads/srts/out.srt', video_id='123456789'):
-    subs = pysrt.open(file)
-    for sub in subs:
-        text = sub.text.strip('\n').strip('\t')
-        new_text = text.replace('\n', "").replace('\t', "").lstrip()
-        data = {'subtitles': new_text, 'videoId': video_id, 'start': str(sub.start), 'end': str(sub.end)}
-        videos_table.put_item(Item=data)
+    try:
+        subs = pysrt.open(file)
+        for sub in subs:
+            text = sub.text.strip('\n').strip('\t')
+            new_text = text.replace('\n', "").replace('\t', "").lstrip()
+            data = {'subtitles': new_text, 'videoId': video_id, 'start': str(sub.start), 'end': str(sub.end)}
+            videos_table.put_item(Item=data)
 
-    print('successfully insert!')
-    return True
+        print('successfully insert!')
+    except Exception as e:
+        raise e
 
 
 def search_subtitle(subtitle: str = '', video_id: str = '123456789'):
