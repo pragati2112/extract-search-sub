@@ -4,8 +4,6 @@ In this project, video(s) can be uploaded, processed in some manner (in the back
 ## Technology used
 FastApi (Python framework)
 
-Vuejs (Front-end)
-
 DynamoDB (Database)
 
 
