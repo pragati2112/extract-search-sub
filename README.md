@@ -9,11 +9,11 @@ DynamoDB (Database)
 
 
 ## Prerequisites
+This is a Python Project. Use of `virtualenvwrapper` is recommended. Please use Python 3.6+. Ideally Python 3.8
+
 Download ccextractor (sudo apt install ccextractor) for linux users, Thats it!
 
 Pull docker image of amazon/dynamodb-local 
-
-mkvirtualenv venv
 
 pip install -r requirements.txt
 
