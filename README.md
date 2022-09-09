@@ -13,7 +13,7 @@ This is a Python Project. Use of `virtualenvwrapper` is recommended. Please use 
 
 Download ccextractor (sudo apt install ccextractor) for linux users, Thats it!
 
-Pull docker image of amazon/dynamodb-local 
+Pull docker image of amazon/dynamodb-local and run as a container `docker run -p 8000:8000 --name dynamodb amazon/dynamodb-local`
 
 pip install -r requirements.txt
 
