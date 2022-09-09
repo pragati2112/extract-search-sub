@@ -4,9 +4,9 @@ from server.read_srt import read_srt_file
 
 # extract subtitle via cc-extractor
 # Read and save in key-value based DB afterwards---
-def extract_subtitles(file_path="uploads/sample2.mp4",
-                      out_path="uploads/srts/out.srt",
-                      video_id=''):
+def extract_subtitles(file_path: str = "uploads/sample2.mp4",
+                      out_path: str = "uploads/srts/out.srt",
+                      video_id: str = ''):
     p = subprocess.Popen(["/usr/bin/ccextractor", file_path, "-o", out_path])
     (output, err) = p.communicate()
     # This makes the wait possible

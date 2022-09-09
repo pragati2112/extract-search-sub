@@ -1,6 +1,7 @@
 import pysrt
 from boto3.dynamodb.conditions import Key
 from server.db_connection import create_videos_table
+
 videos_table = create_videos_table()
 
 
@@ -18,18 +19,28 @@ def read_srt_file(file='server/uploads/srts/out.srt', video_id='123456789'):
         raise e
 
 
-def search_subtitle(subtitle: str = '', video_id: str = '123456789'):
+def search_subtitle(video_id: str = '', subtitle: str = '', ):
     # response = videos_table.scan(TableName='Videos')
     # items = response['Items']
     # for item in items:
-    #     print(item)
+    #     if item['subtitles'] == 'STARRING ME--KUZCO.':
+    #         print(item)
 
-    resp = videos_table.get_item(Key={'subtitles': subtitle, 'videoId': video_id})
+    if video_id is None or len(video_id) == 0:
+        resp = videos_table.scan(
+            FilterExpression='subtitles = :subtitles',
+            ExpressionAttributeValues={':subtitles': subtitle},
+        )
+    else:
+        query = {'subtitles': subtitle, 'videoId': video_id}
+        resp = videos_table.get_item(Key=query)
+
     if 'Item' in resp:
         return resp['Item']
+    elif 'Items' in resp:
+        return resp['Items']
     else:
         return {'message': 'Not found'}
-
 
 # read_srt_file()
 # search_subtitle("I'D CALL THAT")
