@@ -17,11 +17,13 @@ Pull docker image of amazon/dynamodb-local
 
 mkvirtualenv venv
 
+pip install -r requirements.txt
+
 
 ## How to run it
 
-pip install -r requirements.txt
+python main.py
 
-python db_connection.py
+Server will be running on localhost:8002
 
-uvicorn main:app
+To check and try apis hit- http://localhost:8002/docs (This is fastapi provided openapi.json)
